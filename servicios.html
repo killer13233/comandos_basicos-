@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Servicios de FISEI - UTA" />
+    <title>FISEI - Servicios</title>
+    <script src="../assets/js/color-modes.js"></script>
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="theme-color" content="#712cf9" />
+    <link href="carousel.css" rel="stylesheet" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+      .bd-mode-toggle .bi {
+        width: 1em;
+        height: 1em;
+      }
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      /* Hero de servicios */
+      .servicios-hero {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        color: #fff;
+        padding: 100px 0 60px;
+        text-align: center;
+      }
+      .servicios-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+      .servicios-hero p.lead {
+        font-size: 1.2rem;
+        opacity: 0.85;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Tarjetas de servicio */
+      .servicio-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+      }
+      .servicio-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      }
+      .servicio-card .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .servicio-card .card-title {
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+      .servicio-card .badge-servicio {
+        background-color: #0f3460;
+        color: #fff;
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: 0.75rem;
+        display: inline-block;
+      }
+
+      /* Sección de estadísticas */
+      .stats-section {
+        background-color: #0f3460;
+        color: #fff;
+        padding: 60px 0;
+      }
+      .stat-item h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #e94560;
+      }
+      .stat-item p {
+        font-size: 1rem;
+        opacity: 0.85;
+        margin: 0;
+      }
+
+      /* Sección de contacto / CTA */
+      .cta-section {
+        background: linear-gradient(135deg, #e94560, #712cf9);
+        color: #fff;
+        padding: 70px 0;
+        text-align: center;
+      }
+      .cta-section h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+      }
+      .cta-section .btn-light {
+        font-weight: 600;
+        padding: 12px 36px;
+        border-radius: 30px;
+        font-size: 1rem;
+      }
+
+      /* Ajuste de padding por el navbar fijo */
+      main {
+        padding-top: 56px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Iconos SVG reutilizables -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <!-- Toggle de tema -->
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button
+        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        aria-label="Toggle theme (auto)"
+      >
+        <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Navbar (idéntico al de index.html) -->
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">FISEI - UTA</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="servicios.html">Servicios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="servicios-hero">
+        <div class="container">
+          <h1>Nuestros Servicios</h1>
+          <p class="lead mt-3">
+            La Facultad de Ingeniería en Sistemas, Electrónica e Industrial ofrece
+            una amplia gama de servicios académicos y tecnológicos para sus estudiantes y comunidad.
+          </p>
+        </div>
+      </section>
+
+      <!-- Tarjetas de servicios -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="text-center fw-bold mb-2">Servicios Académicos</h2>
+          <p class="text-center text-muted mb-5">Recursos disponibles para toda la comunidad universitaria</p>
+          <div class="row g-4">
+
+            <!-- Laboratorio de Redes -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card servicio-card p-4 text-center">
+                <span class="card-icon">🌐</span>
+                <span class="badge-servicio">Infraestructura</span>
+                <h5 class="card-title">Laboratorio de Redes</h5>
+                <p class="card-text text-muted">
+                  Espacio equipado con routers, switches y herramientas para el estudio
+                  práctico de redes de computadoras, protocolos y seguridad informática.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-2">Ver más &raquo;</a>
+              </div>
+            </div>
+
+            <!-- Laboratorio de Computación -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card servicio-card p-4 text-center">
+                <span class="card-icon">💻</span>
+                <span class="badge-servicio">Tecnología</span>
+                <h5 class="card-title">Laboratorios de Computación</h5>
+                <p class="card-text text-muted">
+                  Computadoras con software especializado para prácticas de programación,
+                  bases de datos, diseño gráfico y desarrollo de aplicaciones.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-2">Ver más &raquo;</a>
+              </div>
+            </div>
+
+            <!-- Biblioteca -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card servicio-card p-4 text-center">
+                <span class="card-icon">📚</span>
+                <span class="badge-servicio">Académico</span>
+                <h5 class="card-title">Biblioteca</h5>
+                <p class="card-text text-muted">
+                  Acceso a libros, revistas científicas, documentos digitales y material
+                  audiovisual para apoyar la investigación y el desarrollo académico.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-2">Ver más &raquo;</a>
+              </div>
+            </div>
+
+            <!-- Tutoría académica -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card servicio-card p-4 text-center">
+                <span class="card-icon">🎓</span>
+                <span class="badge-servicio">Apoyo Estudiantil</span>
+                <h5 class="card-title">Tutorías Académicas</h5>
+                <p class="card-text text-muted">
+                  Programa de tutorías personalizadas con docentes y pares académicos
+                  para reforzar el aprendizaje en materias técnicas.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-2">Ver más &raquo;</a>
+              </div>
+            </div>
+
+            <!-- Investigación -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card servicio-card p-4 text-center">
+                <span class="card-icon">🔬</span>
+                <span class="badge-servicio">Investigación</span>
+                <h5 class="card-title">Centros de Investigación</h5>
+                <p class="card-text text-muted">
+                  Grupos y proyectos de investigación en áreas de sistemas, electrónica
+                  e industria, con vinculación a organismos nacionales e internacionales.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-2">Ver más &raquo;</a>
+              </div>
+            </div>
+
+            <!-- Vinculación -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card servicio-card p-4 text-center">
+                <span class="card-icon">🤝</span>
+                <span class="badge-servicio">Comunidad</span>
+                <h5 class="card-title">Vinculación con la Sociedad</h5>
+                <p class="card-text text-muted">
+                  Proyectos de servicio comunitario y pasantías que conectan a los
+                  estudiantes con empresas e instituciones del sector productivo.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-2">Ver más &raquo;</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Estadísticas -->
+      <section class="stats-section">
+        <div class="container">
+          <div class="row text-center g-4">
+            <div class="col-6 col-md-3 stat-item">
+              <h2>+2000</h2>
+              <p>Estudiantes activos</p>
+            </div>
+            <div class="col-6 col-md-3 stat-item">
+              <h2>15+</h2>
+              <p>Laboratorios equipados</p>
+            </div>
+            <div class="col-6 col-md-3 stat-item">
+              <h2>4</h2>
+              <p>Carreras universitarias</p>
+            </div>
+            <div class="col-6 col-md-3 stat-item">
+              <h2>30+</h2>
+              <p>Años de excelencia</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabla de horarios de servicios -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="text-center fw-bold mb-2">Horarios de Atención</h2>
+          <p class="text-center text-muted mb-4">Consulta los horarios disponibles para cada servicio</p>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th>Servicio</th>
+                  <th>Lunes - Viernes</th>
+                  <th>Sábado</th>
+                  <th>Domingo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Laboratorio de Redes</td>
+                  <td>07:00 - 21:00</td>
+                  <td>08:00 - 14:00</td>
+                  <td class="text-muted">Cerrado</td>
+                </tr>
+                <tr>
+                  <td>Laboratorio de Computación</td>
+                  <td>07:00 - 21:00</td>
+                  <td>08:00 - 14:00</td>
+                  <td class="text-muted">Cerrado</td>
+                </tr>
+                <tr>
+                  <td>Biblioteca</td>
+                  <td>08:00 - 20:00</td>
+                  <td>09:00 - 13:00</td>
+                  <td class="text-muted">Cerrado</td>
+                </tr>
+                <tr>
+                  <td>Tutorías Académicas</td>
+                  <td>08:00 - 18:00</td>
+                  <td class="text-muted">Cerrado</td>
+                  <td class="text-muted">Cerrado</td>
+                </tr>
+                <tr>
+                  <td>Vinculación con la Sociedad</td>
+                  <td>09:00 - 17:00</td>
+                  <td class="text-muted">Cerrado</td>
+                  <td class="text-muted">Cerrado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <div class="container">
+          <h2>¿Necesitas más información?</h2>
+          <p class="mt-3 mb-4" style="opacity:0.9; font-size:1.1rem;">
+            Contáctanos y un asesor te guiará sobre los servicios disponibles para ti.
+          </p>
+          <a href="contacto.html" class="btn btn-light">Contáctanos</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="container py-4">
+      <p class="float-end"><a href="#">Regresar al inicio</a></p>
+      <p>
+        &copy; 2026 FISEI. &middot;
+        <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a>
+      </p>
+    </footer>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
